@@ -22,7 +22,7 @@ Table Orders {
   id int [pk, increment]
   metalId int
   sizeId int
-  styleId int
+  styleId int 
   timestamp timestamp
 }
 
