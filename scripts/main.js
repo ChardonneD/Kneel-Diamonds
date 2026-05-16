@@ -36,7 +36,7 @@ const render = async () => {
         </article>
 
         <article class="order">
-            <button id="orderButton">Create Custom Order</button>
+            ${buttonHTML}
         </article>
 
         <article class="customOrders">
@@ -46,6 +46,11 @@ const render = async () => {
 
     container.innerHTML = composedHTML
 }
+
+document.addEventListener("newOrderPlaced", event => {
+    console.log("State of data has changed. Regenerating HTML...")
+    render()
+})
 
 // Kick off the initial render
 render()
