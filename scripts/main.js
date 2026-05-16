@@ -1,19 +1,19 @@
-// scripts/main.js
 import { MetalOptions } from './MetalOptions.js'
 import { SizeOptions } from './SizeOptions.js'
 import { StyleOptions } from './StyleOptions.js'
 import { SaveOrderButton } from './SaveOrder.js'
-// Grab the container from the DOM
+import { Orders } from './Orders.js' // <--- IMPORT ORDERS
+
 const container = document.querySelector("#container")
 
-//Button HTML string from SaveOrderButton function
-const buttonHTML = SaveOrderButton()
-
-// Notice that render is now an 'async' function!
 const render = async () => {
     const metalOptionsHTML = await MetalOptions()
     const sizeOptionsHTML = await SizeOptions()
     const styleOptionsHTML = await StyleOptions()
+    const buttonHTML = SaveOrderButton()
+    
+    // Get the HTML string of saved orders
+    const ordersHTML = await Orders() // <--- FETCH ORDERS HTML
 
     const composedHTML = `
         <h1>Kneel Diamonds</h1>
@@ -41,16 +41,16 @@ const render = async () => {
 
         <article class="customOrders">
             <h2>Custom Jewelry Orders</h2>
-        </article>
+            ${ordersHTML} </article>
     `
 
     container.innerHTML = composedHTML
 }
 
+render()
+
+// NEW CODE: Listen for the custom event and re-render the app!
 document.addEventListener("newOrderPlaced", event => {
     console.log("State of data has changed. Regenerating HTML...")
     render()
 })
-
-// Kick off the initial render
-render()
