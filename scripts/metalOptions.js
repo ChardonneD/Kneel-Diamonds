@@ -7,11 +7,14 @@ export const MetalOptions = async () => {
     let optionsHTML = "<h2>Metals</h2>"
 
     // Use a for..of loop to generate the radio buttons
-    for (const metal of metals) {
-        optionsHTML += `<div>
-            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
-        </div>`
-    }
+    const divStringArray = metals.map(
+        (metal) => {
+          return `<div>
+              <input type='radio' name='metal' value='${metal.id}' /> ${metal.metal}
+          </div>`
+        }
+    )
+optionsHTML += divStringArray.join("")
 
     return optionsHTML
 }
