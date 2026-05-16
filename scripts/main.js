@@ -2,9 +2,12 @@
 import { MetalOptions } from './MetalOptions.js'
 import { SizeOptions } from './SizeOptions.js'
 import { StyleOptions } from './StyleOptions.js'
-
+import { SaveOrderButton } from './SaveOrder.js'
 // Grab the container from the DOM
 const container = document.querySelector("#container")
+
+//Button HTML string from SaveOrderButton function
+const buttonHTML = SaveOrderButton()
 
 // Notice that render is now an 'async' function!
 const render = async () => {
