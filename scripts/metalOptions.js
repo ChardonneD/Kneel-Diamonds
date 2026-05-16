@@ -4,7 +4,7 @@ export const MetalOptions = async () => {
     const response = await fetch("http://localhost:8088/metals")
     const metals = await response.json()
 
-    let optionsHTML = ""
+    let optionsHTML = "<h2>Metals</h2>"
 
     // Use a for..of loop to generate the radio buttons
     for (const metal of metals) {
