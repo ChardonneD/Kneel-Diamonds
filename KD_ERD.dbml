@@ -1,0 +1,32 @@
+// Kneel Diamonds ERD
+
+Table Metals {
+  id int [pk, increment]
+  metal varchar
+  price float
+}
+
+Table Sizes {
+  id int [pk, increment]
+  carets float
+  price int
+}
+
+Table Styles {
+  id int [pk, increment]
+  style varchar
+  price int
+}
+
+Table Orders {
+  id int [pk, increment]
+  metalId int
+  sizeId int
+  styleId int
+  timestamp timestamp
+}
+
+// Defining the Relationships (Foreign Keys)
+Ref: Orders.metalId > Metals.id
+Ref: Orders.sizeId > Sizes.id
+Ref: Orders.styleId > Styles.id
